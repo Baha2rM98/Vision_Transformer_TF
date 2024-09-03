@@ -178,7 +178,7 @@ class VisionTransformer:
         patches = PatchExtractor(self.num_subpatch, self.subpatch_dim, self.num_channels)(input_layer)
 
         # Encode patches with positional embeddings and class token
-        patches_embed = PatchEncoder(self.num_subpatch, self.model_variant['hidden_size'])(patches)
+        patches_embed = PatchEncoder(self.num_subpatch, self.projection_dim)(patches)
 
         # Pass encoded patches through the transformer encoder
         representation = TransformerEncoder(self.projection_dim, self.num_heads, self.num_blocks, self.dropout_rate)(
